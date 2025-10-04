@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Occasion Based Quote Generator</title>
+  <style>
+    body {
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      height: 100vh; margin: 0;
+      font-family: Arial, sans-serif;
+      transition: background 0.5s;
+    }
+    #box {
+      padding: 20px; border-radius: 12px;
+      background: white; box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      text-align: center; width: 350px;
+    }
+    #quote {
+      font-size: 18px; margin-bottom: 15px;
+      color: #333; min-height: 50px;
+    }
+    select, button {
+      margin: 5px; padding: 8px 12px;
+      border-radius: 8px; border: none;
+      font-size: 16px;
+    }
+    button {
+      background: linear-gradient(45deg, #ff6a00, #ee0979);
+      color: white; cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: linear-gradient(45deg, #ee0979, #ff6a00);
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <h3>🌟 Occasion / Mood Quotes 🌟</h3>
+    <select id="category">
+      <option value="teachers">Teachers’ Day</option>
+      <option value="motivation">Motivation</option>
+      <option value="love">Love</option>
+      <option value="friendship">Friendship</option>
+    
+    </select>
+    <p id="quote">✨ Select a category & click below ✨</p>
+    <button onclick="newQuote()">New Quote</button>
+  </div>
+
+  <script>
+    const quotes = {
+      teachers: [
+        "A teacher takes a hand, opens a mind, and touches a heart. ❤",
+        "Teachers plant seeds of knowledge that grow forever.",
+        "Happy Teachers’ Day! To the guide, the mentor, the inspiration. 🌟"
+      ],
+      motivation: [
+        "Push yourself, because no one else will. 💪",
+        "Every day is a fresh start. ☀",
+        "Doubt kills more dreams than failure ever will."
+      ],
+      love: [
+        "Love is not what you say, love is what you do. 💖",
+        "You are my today and all of my tomorrows.",
+        "Where there is love, there is life. 🌹"
+      ],
+      friendship: [
+        "A friend is one soul in two bodies. 🤝",
+        "Good friends are like stars—you don’t always see them, but you know they’re there.",
+        "Friendship is the only cement that will hold the world together."
+      ],
+        };
+
+    function newQuote() {
+      let category = document.getElementById("category").value;
+      let list = quotes[category];
+      let random = Math.floor(Math.random() * list.length);
+      document.getElementById("quote").innerText = list[random];
+
+      // fun random background for interactivity
+      const colors = ["#ff9a9e","#fad0c4","#fbc2eb","#a1c4fd","#c2e9fb","#d4fc79","#96e6a1","#fddb92"];
+      document.body.style.background = colors[Math.floor(Math.random() * colors.length)];
+    }
+  </script>
+</body>
+</html>
